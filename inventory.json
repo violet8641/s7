@@ -1,0 +1,800 @@
+[
+  {
+    "item_name": "0.8 mm Water Sleev",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "sleev.jpg",
+    "id": 114
+  },
+  {
+    "item_name": "Flexi Raw DB 36 Way",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "a.jpg",
+    "id": 113
+  },
+  {
+    "item_name": "Flexi Raw DB 56 Way",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "a.jpg",
+    "id": 112
+  },
+  {
+    "item_name": "Earth Compound 5 kg",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "e-c.jpg",
+    "id": 111
+  },
+  {
+    "item_name": "63 A Fuse",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "63-a.jpg",
+    "id": 110
+  },
+  {
+    "item_name": "Cable Tie 100",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "tag.jpg",
+    "id": 109
+  },
+  {
+    "item_name": "4 mm Wire Black",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "red.jpg",
+    "id": 108
+  },
+  {
+    "item_name": "4 mm Wire Red",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "i.jpg",
+    "id": 107
+  },
+  {
+    "item_name": "2.5 mm Wire Green",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "f.png",
+    "id": 106
+  },
+  {
+    "item_name": "2.5 mm Wire Black",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "red.jpg",
+    "id": 105
+  },
+  {
+    "item_name": "2.5 mm Wire Blue",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "blue.jpg",
+    "id": 104
+  },
+  {
+    "item_name": "2.5 mm Wire Yellow",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "yellow.jpg",
+    "id": 103
+  },
+  {
+    "item_name": "2.5 mm Wire Red",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "i.jpg",
+    "id": 102
+  },
+  {
+    "item_name": "Earth Pit Chamber",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "chember.jpg",
+    "id": 101
+  },
+  {
+    "item_name": "1.5 mm Wire Green",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "f.png",
+    "id": 100
+  },
+  {
+    "item_name": "1.5 mm Wire Black",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "red.jpg",
+    "id": 99
+  },
+  {
+    "item_name": "1.5 mm Wire Blue",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "blue.jpg",
+    "id": 98
+  },
+  {
+    "item_name": "1.5 mm Wire Yellow",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "yellow.jpg",
+    "id": 97
+  },
+  {
+    "item_name": "1.5 mm Wire Red",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "i.jpg",
+    "id": 96
+  },
+  {
+    "item_name": "1 mm Wire Blue",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "blue.jpg",
+    "id": 95
+  },
+  {
+    "item_name": "1 mm Wire Green",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "f.png",
+    "id": 94
+  },
+  {
+    "item_name": "1 mm Wire Yellow",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "yellow.jpg",
+    "id": 93
+  },
+  {
+    "item_name": "1 mm wire Black",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "red.jpg",
+    "id": 92
+  },
+  {
+    "item_name": "1 mm Wire Red",
+    "brand": "Polycab Green+",
+    "quantity": 1,
+    "item_image_filename": "i.jpg",
+    "id": 91
+  },
+  {
+    "item_name": "Heat Sleeve 6 mm Green",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "h-g.jpg",
+    "id": 90
+  },
+  {
+    "item_name": "Heat Sleeve 10 mm Black",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "g.jpg",
+    "id": 89
+  },
+  {
+    "item_name": "Heat Sleeve 10 mm Blue",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "11.jpg",
+    "id": 88
+  },
+  {
+    "item_name": "Heat Sleeve 10 mm Yellow",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "h-y.jpg",
+    "id": 87
+  },
+  {
+    "item_name": "Heat Sleeve 10 mm Red",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "h-r.jpg",
+    "id": 86
+  },
+  {
+    "item_name": "Heat Sleeve 8 mm Black",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "g.jpg",
+    "id": 85
+  },
+  {
+    "item_name": "Heat Sleeve 8 mm Blue",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "11.jpg",
+    "id": 84
+  },
+  {
+    "item_name": "Heat Sleeve 8 mm Yellow",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "h-y.jpg",
+    "id": 83
+  },
+  {
+    "item_name": "Heat Sleeve 8 mm Red",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "h-r.jpg",
+    "id": 82
+  },
+  {
+    "item_name": "Heat Sleeve 6 mm Black",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "g.jpg",
+    "id": 81
+  },
+  {
+    "item_name": "Heat Sleeve 6 mm Red",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "h-r.jpg",
+    "id": 80
+  },
+  {
+    "item_name": "16 mm Copper Socket",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "c-so.jpg",
+    "id": 79
+  },
+  {
+    "item_name": "6 MM Copper Socket",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "c-so.jpg",
+    "id": 78
+  },
+  {
+    "item_name": "4 MM Copper Socket",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "c-so.jpg",
+    "id": 77
+  },
+  {
+    "item_name": "4 MM Copper Socket",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "c-so.jpg",
+    "id": 76
+  },
+  {
+    "item_name": "2.5 MM Copper Socket",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "c-so.jpg",
+    "id": 75
+  },
+  {
+    "item_name": "16 MM Banana",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "banan-s.jpg",
+    "id": 74
+  },
+  {
+    "item_name": "6 mm Wire Terminals",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "terminals.jpg",
+    "id": 73
+  },
+  {
+    "item_name": "4 mm Wire Terminals",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "terminals.jpg",
+    "id": 72
+  },
+  {
+    "item_name": "2.5 mm Wire Terminals",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "terminals.jpg",
+    "id": 71
+  },
+  {
+    "item_name": "1.5 mm Wire Terminals",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "terminals.jpg",
+    "id": 70
+  },
+  {
+    "item_name": "4 x 4 Angle Holder Euro",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "4-x4.png",
+    "id": 69
+  },
+  {
+    "item_name": "HRC Fuse",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "f.jpg",
+    "id": 68
+  },
+  {
+    "item_name": "Latching Relay",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "relay.jpg",
+    "id": 67
+  },
+  {
+    "item_name": "3 MD Foot Lamp",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "5k.jpeg",
+    "id": 66
+  },
+  {
+    "item_name": "MCCB 63 A 3 Phase",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "mccb.jpg",
+    "id": 65
+  },
+  {
+    "item_name": "MCCB 1 Phase 40 A",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "mccb.jpg",
+    "id": 64
+  },
+  {
+    "item_name": "MCCB Meter Bord 3 Phase",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "meter-board.jpg",
+    "id": 63
+  },
+  {
+    "item_name": "MCCB Meter Bord 1 Phase",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "meter-board.jpg",
+    "id": 62
+  },
+  {
+    "item_name": "Co Box Screws",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "854.jpg",
+    "id": 61
+  },
+  {
+    "item_name": "1'' Black Srews",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "images.jpeg",
+    "id": 60
+  },
+  {
+    "item_name": "1 1/4 SS'' Screw",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "854.jpg",
+    "id": 59
+  },
+  {
+    "item_name": "Wall Plug 32 mm",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "plug.jpg",
+    "id": 58
+  },
+  {
+    "item_name": "Cycle Screw & Washer",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "c-s.jpg",
+    "id": 57
+  },
+  {
+    "item_name": "Earth Pipe Net & Bolt",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "e-n-b.jpg",
+    "id": 56
+  },
+  {
+    "item_name": "Earth Pipe 1.5 Meter",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "e-p.jpg",
+    "id": 55
+  },
+  {
+    "item_name": "Ding Dong",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "white.png",
+    "id": 54
+  },
+  {
+    "item_name": "MCB B 6",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "mcb.jpg",
+    "id": 53
+  },
+  {
+    "item_name": "MCB C 6 A",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "mcb.jpg",
+    "id": 52
+  },
+  {
+    "item_name": "MCB C10 A",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "mcb.jpg",
+    "id": 51
+  },
+  {
+    "item_name": "MCB C16 A",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "mcb.jpg",
+    "id": 50
+  },
+  {
+    "item_name": "MCB 32 A 2 Pole",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "2-p.jpg",
+    "id": 49
+  },
+  {
+    "item_name": "MCB 40 A 2 Pole",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "2-p.jpg",
+    "id": 48
+  },
+  {
+    "item_name": "RCCB 2 Pole 40 A",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "rccb.jpg",
+    "id": 47
+  },
+  {
+    "item_name": "RCCB 4 Pole 63 A",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "5.jpg",
+    "id": 46
+  },
+  {
+    "item_name": "2 Pole Isolator 63 A",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "4.jpg",
+    "id": 45
+  },
+  {
+    "item_name": "4 Pole Isolator 63 A",
+    "brand": "Schneider",
+    "quantity": 1,
+    "item_image_filename": "88.jpg",
+    "id": 44
+  },
+  {
+    "item_name": "Dammy Plate",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "d-p.jpg",
+    "id": 43
+  },
+  {
+    "item_name": "1 MD Bell Push",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "b.jpg",
+    "id": 42
+  },
+  {
+    "item_name": "2 MD Bell Push",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "2-md-b.jpg",
+    "id": 41
+  },
+  {
+    "item_name": "32 A DP Switch",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "32-a.jpg",
+    "id": 40
+  },
+  {
+    "item_name": "20 A 2 Way Switch",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "2w.jpg",
+    "id": 39
+  },
+  {
+    "item_name": "20 A 1 Way Switch 1 MD",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "16-a-s.png",
+    "id": 38
+  },
+  {
+    "item_name": "16 A 3 Pin Top",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "16-a-top.jpg",
+    "id": 37
+  },
+  {
+    "item_name": "Inte'l Socket / 6 A Socket",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "6a.png",
+    "id": 36
+  },
+  {
+    "item_name": "1 MD Plate",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "1.jpg",
+    "id": 35
+  },
+  {
+    "item_name": "2 MD Plate",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "2.jpg",
+    "id": 34
+  },
+  {
+    "item_name": "3 MD Plate with Partition",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "4.png",
+    "id": 33
+  },
+  {
+    "item_name": "3 MD Plate W/O Partition",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "3.jpg",
+    "id": 32
+  },
+  {
+    "item_name": "4 MD Plate",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "4.png",
+    "id": 31
+  },
+  {
+    "item_name": "6 MD Plate",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "6.png",
+    "id": 30
+  },
+  {
+    "item_name": "6 MD Plate W/O Partition",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "6md-.jpg",
+    "id": 29
+  },
+  {
+    "item_name": "8 MD Plate",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "8.png",
+    "id": 28
+  },
+  {
+    "item_name": "Hack Saw Blade",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "white.png",
+    "id": 27
+  },
+  {
+    "item_name": "Neelam Powder",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "white.png",
+    "id": 26
+  },
+  {
+    "item_name": "Insulation Tap",
+    "brand": "Efab",
+    "quantity": 1,
+    "item_image_filename": "t.jpg",
+    "id": 25
+  },
+  {
+    "item_name": "10 SWG Copper",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "copper.jpg",
+    "id": 24
+  },
+  {
+    "item_name": "Star Bond 100 ml",
+    "brand": "Star",
+    "quantity": 1,
+    "item_image_filename": "star-bond.jpg",
+    "id": 23
+  },
+  {
+    "item_name": "5 '' Cutting Wheel",
+    "brand": "Awant",
+    "quantity": 1,
+    "item_image_filename": "awant.jpg",
+    "id": 22
+  },
+  {
+    "item_name": "2 '' Masking Tap ( Paper )",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "maskin-tap.jpg",
+    "id": 21
+  },
+  {
+    "item_name": "Concrete Nails 2 in",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "concreet-nails-2.jpg",
+    "id": 20
+  },
+  {
+    "item_name": "25 - 25 mm Adaptor",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "adaptor.jpg",
+    "id": 19
+  },
+  {
+    "item_name": "20 - 20 mm Adaptor",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "adaptor.jpg",
+    "id": 18
+  },
+  {
+    "item_name": "25 - 20 mm Adaptor",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "adaptor.jpg",
+    "id": 17
+  },
+  {
+    "item_name": "2 MD Metal Box",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "2-md.jpg",
+    "id": 16
+  },
+  {
+    "item_name": "3 MD Metal Box",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "3-md.jpg",
+    "id": 15
+  },
+  {
+    "item_name": "4 MD Metal Box",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "4md.jpg",
+    "id": 14
+  },
+  {
+    "item_name": "6 MD Metal Box",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "6-md.jpg",
+    "id": 13
+  },
+  {
+    "item_name": "8 MD Metal Box",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "8-md.jpg",
+    "id": 12
+  },
+  {
+    "item_name": "4 X 4 Co box",
+    "brand": "Cawin",
+    "quantity": 1,
+    "item_image_filename": "co-box.jpg",
+    "id": 11
+  },
+  {
+    "item_name": "3 X 3 Co Box with Adapter ( Plain )",
+    "brand": "Cawin",
+    "quantity": 1,
+    "item_image_filename": "co-box.jpg",
+    "id": 10
+  },
+  {
+    "item_name": "3 X 3 Co Box with Adapter ( Hole )",
+    "brand": "Cawin",
+    "quantity": 1,
+    "item_image_filename": "co-box.jpg",
+    "id": 9
+  },
+  {
+    "item_name": "32 MM Bent",
+    "brand": "",
+    "quantity": 1,
+    "item_image_filename": "25-bent.jpg",
+    "id": 8
+  },
+  {
+    "item_name": "32 mm Electrical Conduit - BLACK",
+    "brand": "Astral / Polycab",
+    "quantity": 1,
+    "item_image_filename": "pipe.jpg",
+    "id": 7
+  },
+  {
+    "item_name": "25 mm Electrical Conduit MMS - IVORY",
+    "brand": "Astral / Polycab",
+    "quantity": 1,
+    "item_image_filename": "25.webp",
+    "id": 6
+  },
+  {
+    "item_name": "25 mm Electrical Conduit LMS - BLACK",
+    "brand": "Astral / Polycab",
+    "quantity": 1,
+    "item_image_filename": "pipe.jpg",
+    "id": 5
+  },
+  {
+    "item_name": "20 mm Electrical Conduit MMS - BLACK",
+    "brand": "Astral / Polycab",
+    "quantity": 1,
+    "item_image_filename": "pipe.jpg",
+    "id": 4
+  },
+  {
+    "item_name": "20 mm Electrical Conduit LMS - BLACK",
+    "brand": "Astral / Polycab",
+    "quantity": 1,
+    "item_image_filename": "pipe.jpg",
+    "id": 3
+  },
+  {
+    "item_name": "20 mm Electrical Conduit MMS - IVORY",
+    "brand": "Astral / Polycab",
+    "quantity": 1,
+    "item_image_filename": "dv.png",
+    "id": 2
+  },
+  {
+    "item_name": "20 mm Electrical Conduit LMS - IVORY",
+    "brand": "Astral / Polycab",
+    "quantity": 1,
+    "item_image_filename": "dv.png",
+    "id": 1
+  }
+]

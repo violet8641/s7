@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartech</title>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --accent: #2563eb;
+            --light-bg: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 20px;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: #e2e8f0;
+            border: none;
+            border-radius: 6px 6px 0 0;
+            font-weight: bold;
+            cursor: pointer;
+            color: #64748b;
+        }
+        .tab-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Shop Header */
+        .shop-header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .shop-info h1 { margin: 0 0 5px 0; color: var(--primary); font-size: 24px; }
+        .shop-info p { margin: 2px 0; font-size: 13px; color: #64748b; }
+        .header-logo { height: 60px; width: auto; object-fit: contain; display: block; }
+        
+        .estimate-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .estimate-title h2 { margin: 0; font-size: 20px; color: var(--accent); }
+
+        /* Customer Details Form */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            background: var(--light-bg);
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .form-group label { font-weight: bold; font-size: 12px; text-transform: uppercase; }
+        .form-group input { padding: 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 14px; }
+
+        /* Search Dropdown Section */
+        .search-select-section {
+            margin-bottom: 20px;
+            background: #eff6ff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px dashed #bfdbfe;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            position: relative;
+        }
+        .search-select-section label { font-weight: bold; font-size: 13px; color: var(--accent); white-space: nowrap; }
+        .search-select-section input { flex-grow: 1; padding: 8px 12px; border: 1px solid var(--border); border-radius: 4px; font-size: 14px; }
+
+        /* Custom dropdown for YouTube-style search */
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 2px;
+        }
+        .search-dropdown.show {
+            display: block;
+        }
+        .search-dropdown-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .search-dropdown-item:hover {
+            background: #eff6ff;
+        }
+        .search-dropdown-item img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+        .search-dropdown-item .item-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .search-dropdown-item .item-name {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .search-dropdown-item .item-details {
+            font-size: 12px;
+            color: #64748b;
+        }
+        .no-results {
+            padding: 10px 15px;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        th, td { padding: 5px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background-color: var(--primary); color: white; font-size: 13px; }
+        td input { width: 90%; padding: 6px; border: 1px solid var(--border); border-radius: 4px; }
+        
+        /* Image dimensions */
+        .table-thumb { width: 40px; height: 40px; object-fit: contain; border-radius: 4px; border: 1px solid var(--border); background-color: #fff; }
+        
+        /* Gap between image and text field */
+        .item-cell { display: flex; align-items: center; gap: 18px; }
+
+        /* Inventory Manager Form */
+        .inv-form {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 2fr;
+            gap: 10px;
+        }
+        .inv-form-full { grid-column: span 4; display: flex; justify-content: flex-end; gap: 10px; align-items: center; }
+        .img-preview { width: 40px; height: 40px; object-fit: contain; border-radius: 4px; border: 1px solid var(--border); background-color: #fff; }
+
+        /* View All tab styles - LIST VIEW */
+        .viewall-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .viewall-header h2 { margin: 0; }
+        .viewall-list {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .viewall-list-header {
+            display: grid;
+            grid-template-columns: 60px 1fr 200px 140px 190px;
+            gap: 12px;
+            padding: 10px 14px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            align-items: center;
+        }
+        .viewall-row {
+            display: grid;
+            grid-template-columns: 60px 1fr 200px 140px 190px;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+            transition: background 0.12s;
+        }
+        .viewall-row:last-child {
+            border-bottom: none;
+        }
+        .viewall-row:hover {
+            background: #f8fafc;
+        }
+        .viewall-row .row-img img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: #fff;
+            display: block;
+        }
+        .viewall-row .row-name {
+            font-weight: bold;
+            font-size: 14px;
+            color: var(--primary);
+            word-break: break-word;
+        }
+        .viewall-row .row-qty {
+            font-size: 13px;
+            color: #334155;
+        }
+        .viewall-row .row-qty strong {
+            color: var(--primary);
+        }
+        .viewall-row .row-brand {
+            font-size: 13px;
+            color: #64748b;
+        }
+        .viewall-row .row-action {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Quantity stepper used inside View All rows */
+        .qty-stepper {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 3px;
+        }
+        .qty-stepper button {
+            width: 26px;
+            height: 26px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            padding: 0;
+        }
+        .qty-stepper .qty-minus {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+        .qty-stepper .qty-minus:hover { background: #fecaca; }
+        .qty-stepper .qty-plus {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .qty-stepper .qty-plus:hover { background: #bbf7d0; }
+        .qty-stepper .qty-count {
+            min-width: 32px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            color: var(--primary);
+            padding: 0 4px;
+        }
+        .qty-stepper.is-empty .qty-count {
+            color: #94a3b8;
+        }
+        .qty-stepper.is-empty .qty-minus {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Home button in View All tab */
+        .btn-home {
+            background: var(--primary);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-home:hover { background: #0f172a; }
+
+        .btn-viewall {
+            background: #8b5cf6;
+            color: white;
+        }
+        .btn-sm {
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* Actions & Buttons */
+        .actions { display: flex; justify-content: flex-end; align-items: center; margin-top: 20px; }
+        .btn { padding: 8px 16px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .btn-add { background: #10b981; color: white; }
+        .btn-print { background: var(--accent); color: white; }
+        .btn-edit { background: #f59e0b; color: white; }
+        .btn-delete { background: #ef4444; color: white; }
+        .btn-cancel { background: #64748b; color: white; }
+
+        /* Hide repeating border from screen view */
+        .print-border {
+            display: none;
+        }
+
+
+        /* PDF Printing Styles & Header/Footer Removal */
+        @page {
+            margin: 8mm;
+        }
+
+        @media print {
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: auto;
+            }
+            
+            body { 
+                background: none; 
+            }
+
+            .print-border {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 2px solid var(--primary);
+                opacity: 0.5;
+                box-sizing: border-box;
+                pointer-events: none;
+                z-index: 1000;
+            }
+
+            .container { 
+                box-shadow: none; 
+                border: none;
+                border-radius: 0;
+                padding: 10mm !important;
+                width: 100%; 
+                max-width: 100%;
+                height: auto;
+                overflow: visible;
+                box-sizing: border-box; 
+            }
+
+            .nav-tabs, .search-select-section, .no-print, .btn-delete { 
+                display: none !important; 
+            }
+            input { 
+                border: none !important; 
+                background: transparent !important; 
+                padding: 0 !important; 
+            }
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                display: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                width: 0 !important;
+                height: 0 !important;
+                position: absolute !important;
+                pointer-events: none !important;
+            }
+            input[type="date"]::-webkit-inner-spin-button,
+            input[type="date"]::-webkit-outer-spin-button,
+            input[type="date"]::-webkit-clear-button,
+            input[type="date"]::-moz-clear-button,
+            input[type="date"]::-ms-clear,
+            input[type="date"]::-ms-expand {
+                display: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                width: 0 !important;
+            }
+            .no-print-date {
+                display: none !important;
+            }
+            .print-date-text {
+                display: block !important;
+                font-size: 14px;
+                color: #334155;
+                padding: 0 !important;
+                margin: 0 !important;
+                line-height: 1.4;
+            }
+
+            .table-thumb {
+                object-fit: contain !important;
+            }
+
+            table { page-break-inside: auto; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            thead { display: table-header-group; }
+        }
+
+        .print-date-text {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="print-border"></div>
+
+<div class="container">
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs no-print">
+        <button class="tab-btn active" onclick="switchTab('estimateTab', this)">Estimate Generator</button>
+        <button class="tab-btn" onclick="switchTab('inventoryTab', this)">Inventory Manager</button>
+        <button class="tab-btn" id="navViewAllBtn" style="display: none;" onclick="switchTab('viewAllTab', this)">View All</button>
+    </div>
+
+    <!-- TAB 1: ESTIMATE GENERATOR -->
+    <div id="estimateTab" class="tab-content active">
+        <div class="shop-header">
+            <div class="shop-info">
+                <h1>SmarTech Solutions</h1>
+                <p>Electrical, Plumbing, CCTV, Solar & Automation</p>
+                <p>Trippanachi | Ph: +91 8590 48 48 48</p>
+            </div>
+            <img src="kik.jpeg" alt="SmarTech Logo" class="header-logo">
+        </div>
+
+        <div class="estimate-title">
+            <h2>ESTIMATE - ELECTRICALS</h2>
+        </div>
+
+        <div class="details-grid">
+            <div class="form-group">
+                <label for="custName">Customer Name</label>
+                <input type="text" id="custName" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="estDate">Date</label>
+                <input type="date" id="estDate" class="no-print-date">
+                <span id="estDatePrint" class="print-date-text"></span>
+            </div>
+            <div class="form-group">
+                <label for="custPhone">Phone Number</label>
+                <input type="text" id="custPhone" placeholder="+91 00000 00000">
+            </div>
+            <div class="form-group">
+                <label for="estNo">Estimate No.</label>
+                <input type="text" id="estNo" value="EST-1001">
+            </div>
+        </div>
+
+        <!-- YouTube-style Search Dropdown -->
+        <div class="search-select-section no-print">
+            <label for="itemSearchInput">🔍 Search & Add Item:</label>
+            <div style="flex-grow: 1; position: relative;">
+                <input type="text" id="itemSearchInput" placeholder="Type item name to search..." autocomplete="off">
+                <div id="searchDropdown" class="search-dropdown"></div>
+            </div>
+            <button class="btn btn-viewall" onclick="switchToViewAll()">📋 View All</button>
+            <button class="btn btn-add" onclick="addNewRow()">+ Add Blank Line</button>
+        </div>
+
+        <table id="estimateTable">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">SL NO</th>
+                    <th style="width: 47%;">ITEM DESCRIPTION</th>
+                    <th style="width: 15%;">QTY</th>
+                    <th style="width: 20%;">BRAND</th>
+                    <th class="no-print" style="width: 10%;">ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <div class="actions">
+            <button class="btn btn-print no-print" onclick="window.print()">Print / Save as PDF</button>
+        </div>
+    </div>
+
+    <!-- TAB 2: INVENTORY MANAGER -->
+    <div id="inventoryTab" class="tab-content">
+        <h2>Inventory Management</h2>
+        
+        <div class="inv-form">
+            <input type="hidden" id="invEditId">
+            <div class="form-group">
+                <label>Item Name</label>
+                <input type="text" id="invName" placeholder="Product Name">
+            </div>
+            <div class="form-group">
+                <label>Default Qty</label>
+                <input type="number" id="invQty" value="1" min="1">
+            </div>
+            <div class="form-group">
+                <label>Brand</label>
+                <input type="text" id="invBrand">
+            </div>
+            <div class="form-group">
+                <label>Upload Item Image</label>
+                <input type="file" id="invImageInput" accept="image/*" onchange="previewLocalImage(event)">
+            </div>
+            <div class="inv-form-full">
+                <img id="imagePreview" class="img-preview" src="" style="display:none;">
+                <button class="btn btn-cancel" id="btnCancelEdit" onclick="resetInvForm()" style="display:none;">Cancel Edit</button>
+                <button class="btn btn-add" id="btnSaveInv" onclick="saveInventoryItem()">Save Item to Inventory</button>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Item Name</th>
+                    <th>Default Qty</th>
+                    <th>Brand</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="inventoryTableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- TAB 3: VIEW ALL -->
+    <div id="viewAllTab" class="tab-content">
+        <div class="viewall-header">
+            <h2>All Items</h2>
+            <button class="btn btn-home" onclick="goHomeFromViewAll()">🏠 Home</button>
+        </div>
+        <div id="viewAllList" class="viewall-list">
+            <div class="viewall-list-header">
+                <div>Image</div>
+                <div>Item Name</div>
+                <div style="text-align:center;">Added to Estimate</div>
+                <div>Brand</div>
+                <div style="text-align:right;">Action</div>
+            </div>
+            <div id="viewAllBody"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const defaultPlaceholder = "white.png";
+
+    const defaultInventorySeed = [
+       
+        
+        
+        
+  { id: 114, name: "0.8 mm Water Sleev", qty: 1, brand: "", img: "sleev.jpg" },
+  { id: 113, name: "Flexi Raw DB 36 Way", qty: 1, brand: "Schneider", img: "a.jpg" },
+  { id: 112, name: "Flexi Raw DB 56 Way", qty: 1, brand: "Schneider", img: "a.jpg" },
+  { id: 111, name: "Earth Compound 5 kg", qty: 1, brand: "", img: "e-c.jpg" },
+  { id: 110, name: "63 A Fuse", qty: 1, brand: "", img: "63-a.jpg" },
+  { id: 109, name: "Cable Tie 100", qty: 1, brand: "", img: "tag.jpg" },
+  { id: 108, name: "4 mm Wire Black", qty: 1, brand: "Polycab Green+", img: "red.jpg" },
+  { id: 107, name: "4 mm Wire Red", qty: 1, brand: "Polycab Green+", img: "i.jpg" },
+  { id: 106, name: "2.5 mm Wire Green", qty: 1, brand: "Polycab Green+", img: "f.png" },
+  { id: 105, name: "2.5 mm Wire Black", qty: 1, brand: "Polycab Green+", img: "red.jpg" },
+  { id: 104, name: "2.5 mm Wire Blue", qty: 1, brand: "Polycab Green+", img: "blue.jpg" },
+  { id: 103, name: "2.5 mm Wire Yellow", qty: 1, brand: "Polycab Green+", img: "yellow.jpg" },
+  { id: 102, name: "2.5 mm Wire Red", qty: 1, brand: "Polycab Green+", img: "i.jpg" },
+  { id: 101, name: "Earth Pit Chamber", qty: 1, brand: "", img: "chember.jpg" },
+  { id: 100, name: "1.5 mm Wire Green", qty: 1, brand: "Polycab Green+", img: "f.png" },
+  { id: 99, name: "1.5 mm Wire Black", qty: 1, brand: "Polycab Green+", img: "red.jpg" },
+  { id: 98, name: "1.5 mm Wire Blue", qty: 1, brand: "Polycab Green+", img: "blue.jpg" },
+  { id: 97, name: "1.5 mm Wire Yellow", qty: 1, brand: "Polycab Green+", img: "yellow.jpg" },
+  { id: 96, name: "1.5 mm Wire Red", qty: 1, brand: "Polycab Green+", img: "i.jpg" },
+  { id: 95, name: "1 mm Wire Blue", qty: 1, brand: "Polycab Green+", img: "blue.jpg" },
+  { id: 94, name: "1 mm Wire Green", qty: 1, brand: "Polycab Green+", img: "f.png" },
+  { id: 93, name: "1 mm Wire Yellow", qty: 1, brand: "Polycab Green+", img: "yellow.jpg" },
+  { id: 92, name: "1 mm wire Black", qty: 1, brand: "Polycab Green+", img: "red.jpg" },
+  { id: 91, name: "1 mm Wire Red", qty: 1, brand: "Polycab Green+", img: "i.jpg" },
+  { id: 90, name: "Heat Sleeve 6 mm Green", qty: 1, brand: "", img: "h-g.jpg" },
+  { id: 89, name: "Heat Sleeve 10 mm Black", qty: 1, brand: "", img: "g.jpg" },
+  { id: 88, name: "Heat Sleeve 10 mm Blue", qty: 1, brand: "", img: "11.jpg" },
+  { id: 87, name: "Heat Sleeve 10 mm Yellow", qty: 1, brand: "", img: "h-y.jpg" },
+  { id: 86, name: "Heat Sleeve 10 mm Red", qty: 1, brand: "", img: "h-r.jpg" },
+  { id: 85, name: "Heat Sleeve 8 mm Black", qty: 1, brand: "", img: "g.jpg" },
+  { id: 84, name: "Heat Sleeve 8 mm Blue", qty: 1, brand: "", img: "11.jpg" },
+  { id: 83, name: "Heat Sleeve 8 mm Yellow", qty: 1, brand: "", img: "h-y.jpg" },
+  { id: 82, name: "Heat Sleeve 8 mm Red", qty: 1, brand: "", img: "h-r.jpg" },
+  { id: 81, name: "Heat Sleeve 6 mm Black", qty: 1, brand: "", img: "g.jpg" },
+  { id: 80, name: "Heat Sleeve 6 mm Red", qty: 1, brand: "", img: "h-r.jpg" },
+  { id: 79, name: "16 mm Copper Socket", qty: 1, brand: "", img: "c-so.jpg" },
+  { id: 78, name: "6 MM Copper Socket", qty: 1, brand: "", img: "c-so.jpg" },
+  { id: 77, name: "4 MM Copper Socket", qty: 1, brand: "", img: "c-so.jpg" },
+  { id: 76, name: "4 MM Copper Socket", qty: 1, brand: "", img: "c-so.jpg" },
+  { id: 75, name: "2.5 MM Copper Socket", qty: 1, brand: "", img: "c-so.jpg" },
+  { id: 74, name: "16 MM Banana", qty: 1, brand: "", img: "banan-s.jpg" },
+  { id: 73, name: "6 mm Wire Terminals", qty: 1, brand: "", img: "terminals.jpg" },
+  { id: 72, name: "4 mm Wire Terminals", qty: 1, brand: "", img: "terminals.jpg" },
+  { id: 71, name: "2.5 mm Wire Terminals", qty: 1, brand: "", img: "terminals.jpg" },
+  { id: 70, name: "1.5 mm Wire Terminals", qty: 1, brand: "", img: "terminals.jpg" },
+  { id: 69, name: "4 x 4 Angle Holder Euro", qty: 1, brand: "", img: "4-x4.png" },
+  { id: 68, name: "HRC Fuse", qty: 1, brand: "", img: "f.jpg" },
+  { id: 67, name: "Latching Relay", qty: 1, brand: "Schneider", img: "relay.jpg" },
+  { id: 66, name: "3 MD Foot Lamp", qty: 1, brand: "", img: "5k.jpeg" },
+  { id: 65, name: "MCCB 63 A 3 Phase", qty: 1, brand: "", img: "mccb.jpg" },
+  { id: 64, name: "MCCB 1 Phase 40 A", qty: 1, brand: "", img: "mccb.jpg" },
+  { id: 63, name: "MCCB Meter Bord 3 Phase", qty: 1, brand: "", img: "meter-board.jpg" },
+  { id: 62, name: "MCCB Meter Bord 1 Phase", qty: 1, brand: "", img: "meter-board.jpg" },
+  { id: 61, name: "Co Box Screws", qty: 1, brand: "", img: "854.jpg" },
+  { id: 60, name: "1'' Black Srews", qty: 1, brand: "", img: "images.jpeg" },
+  { id: 59, name: "1 1/4 SS'' Screw", qty: 1, brand: "", img: "854.jpg" },
+  { id: 58, name: "Wall Plug 32 mm", qty: 1, brand: "", img: "plug.jpg" },
+  { id: 57, name: "Cycle Screw & Washer", qty: 1, brand: "", img: "c-s.jpg" },
+  { id: 56, name: "Earth Pipe Net & Bolt", qty: 1, brand: "", img: "e-n-b.jpg" },
+  { id: 55, name: "Earth Pipe 1.5 Meter", qty: 1, brand: "", img: "e-p.jpg" },
+  { id: 54, name: "Ding Dong", qty: 1, brand: "", img: "white.png" },
+  { id: 53, name: "MCB B 6", qty: 1, brand: "Schneider", img: "mcb.jpg" },
+  { id: 52, name: "MCB C 6 A", qty: 1, brand: "Schneider", img: "mcb.jpg" },
+  { id: 51, name: "MCB C10 A", qty: 1, brand: "Schneider", img: "mcb.jpg" },
+  { id: 50, name: "MCB C16 A", qty: 1, brand: "Schneider", img: "mcb.jpg" },
+  { id: 49, name: "MCB 32 A 2 Pole", qty: 1, brand: "Schneider", img: "2-p.jpg" },
+  { id: 48, name: "MCB 40 A 2 Pole", qty: 1, brand: "Schneider", img: "2-p.jpg" },
+  { id: 47, name: "RCCB 2 Pole 40 A", qty: 1, brand: "Schneider", img: "rccb.jpg" },
+  { id: 46, name: "RCCB 4 Pole 63 A", qty: 1, brand: "Schneider", img: "5.jpg" },
+  { id: 45, name: "2 Pole Isolator 63 A", qty: 1, brand: "Schneider", img: "4.jpg" },
+  { id: 44, name: "4 Pole Isolator 63 A", qty: 1, brand: "Schneider", img: "88.jpg" },
+  { id: 43, name: "Dammy Plate", qty: 1, brand: "", img: "d-p.jpg" },
+  { id: 42, name: "1 MD Bell Push", qty: 1, brand: "", img: "b.jpg" },
+  { id: 41, name: "2 MD Bell Push", qty: 1, brand: "", img: "2-md-b.jpg" },
+  { id: 40, name: "32 A DP Switch", qty: 1, brand: "", img: "32-a.jpg" },
+  { id: 39, name: "20 A 2 Way Switch", qty: 1, brand: "", img: "2w.jpg" },
+  { id: 38, name: "20 A 1 Way Switch 1 MD", qty: 1, brand: "", img: "16-a-s.png" },
+  { id: 37, name: "16 A 3 Pin Top", qty: 1, brand: "", img: "16-a-top.jpg" },
+  { id: 36, name: "Inte'l Socket / 6 A Socket", qty: 1, brand: "", img: "6a.png" },
+  { id: 35, name: "1 MD Plate", qty: 1, brand: "", img: "1.jpg" },
+  { id: 34, name: "2 MD Plate", qty: 1, brand: "", img: "2.jpg" },
+  { id: 33, name: "3 MD Plate with Partition", qty: 1, brand: "", img: "4.png" },
+  { id: 32, name: "3 MD Plate W/O Partition", qty: 1, brand: "", img: "3.jpg" },
+  { id: 31, name: "4 MD Plate", qty: 1, brand: "", img: "4.png" },
+  { id: 30, name: "6 MD Plate", qty: 1, brand: "", img: "6.png" },
+  { id: 29, name: "6 MD Plate W/O Partition", qty: 1, brand: "", img: "6md-.jpg" },
+  { id: 28, name: "8 MD Plate", qty: 1, brand: "", img: "8.png" },
+  { id: 27, name: "Hack Saw Blade", qty: 1, brand: "", img: "white.png" },
+  { id: 26, name: "Neelam Powder", qty: 1, brand: "", img: "white.png" },
+  { id: 25, name: "Insulation Tap", qty: 1, brand: "Efab", img: "t.jpg" },
+  { id: 24, name: "10 SWG Copper", qty: 1, brand: "", img: "copper.jpg" },
+  { id: 23, name: "Star Bond 100 ml", qty: 1, brand: "Star", img: "star-bond.jpg" },
+  { id: 22, name: "5 '' Cutting Wheel", qty: 1, brand: "Awant", img: "awant.jpg" },
+  { id: 21, name: "2 '' Masking Tap ( Paper )", qty: 1, brand: "", img: "maskin-tap.jpg" },
+  { id: 20, name: "Concrete Nails 2 in", qty: 1, brand: "", img: "concreet-nails-2.jpg" },
+  { id: 19, name: "25 - 25 mm Adaptor", qty: 1, brand: "", img: "adaptor.jpg" },
+  { id: 18, name: "20 - 20 mm Adaptor", qty: 1, brand: "", img: "adaptor.jpg" },
+  { id: 17, name: "25 - 20 mm Adaptor", qty: 1, brand: "", img: "adaptor.jpg" },
+  { id: 16, name: "2 MD Metal Box", qty: 1, brand: "", img: "2-md.jpg" },
+  { id: 15, name: "3 MD Metal Box", qty: 1, brand: "", img: "3-md.jpg" },
+  { id: 14, name: "4 MD Metal Box", qty: 1, brand: "", img: "4md.jpg" },
+  { id: 13, name: "6 MD Metal Box", qty: 1, brand: "", img: "6-md.jpg" },
+  { id: 12, name: "8 MD Metal Box", qty: 1, brand: "", img: "8-md.jpg" },
+  { id: 11, name: "4 X 4 Co box", qty: 1, brand: "Cawin", img: "co-box.jpg" },
+  { id: 10, name: "3 X 3 Co Box with Adapter ( Plain )", qty: 1, brand: "Cawin", img: "co-box.jpg" },
+  { id: 9, name: "3 X 3 Co Box with Adapter ( Hole )", qty: 1, brand: "Cawin", img: "co-box.jpg" },
+  { id: 8, name: "32 MM Bent", qty: 1, brand: "", img: "25-bent.jpg" },
+  { id: 7, name: "32 mm Electrical Conduit - BLACK", qty: 1, brand: "Astral / Polycab", img: "pipe.jpg" },
+  { id: 6, name: "25 mm Electrical Conduit MMS - IVORY", qty: 1, brand: "Astral / Polycab", img: "25.jpg" },
+  { id: 5, name: "25 mm Electrical Conduit LMS - BLACK", qty: 1, brand: "Astral / Polycab", img: "pipe.jpg" },
+  { id: 4, name: "20 mm Electrical Conduit MMS - BLACK", qty: 1, brand: "Astral / Polycab", img: "pipe.jpg" },
+  { id: 3, name: "20 mm Electrical Conduit LMS - BLACK", qty: 1, brand: "Astral / Polycab", img: "pipe.jpg" },
+  { id: 2, name: "20 mm Electrical Conduit MMS - IVORY", qty: 1, brand: "Astral / Polycab", img: "dv.png" },
+  { id: 1, name: "20 mm Electrical Conduit LMS - IVORY", qty: 1, brand: "Astral / Polycab", img: "dv.png" }
+        
+        
+    ];
+
+    // Safe inventory loading
+    let inventory;
+    try {
+        const stored = localStorage.getItem('app_inventory');
+        if (stored) {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                inventory = parsed;
+            } else {
+                inventory = [...defaultInventorySeed];
+            }
+        } else {
+            inventory = [...defaultInventorySeed];
+        }
+    } catch (e) {
+        console.warn('Failed to load inventory from localStorage, using defaults:', e);
+        inventory = [...defaultInventorySeed];
+        try { localStorage.removeItem('app_inventory'); } catch (e2) {}
+    }
+
+    let currentBase64Image = defaultPlaceholder;
+
+    // Date handling
+    const estDateInput = document.getElementById('estDate');
+    const estDatePrint = document.getElementById('estDatePrint');
+
+    function formatDateForPrint(dateStr) {
+        if (!dateStr) return '';
+        const d = new Date(dateStr + 'T00:00:00');
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const year = d.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+    function syncDatePrint() {
+        estDatePrint.textContent = formatDateForPrint(estDateInput.value);
+    }
+
+    estDateInput.valueAsDate = new Date();
+    syncDatePrint();
+    estDateInput.addEventListener('change', syncDatePrint);
+    estDateInput.addEventListener('input', syncDatePrint);
+
+    function saveToLocalStorage() {
+        try {
+            localStorage.setItem('app_inventory', JSON.stringify(inventory));
+        } catch (e) {
+            console.warn('Failed to save to localStorage:', e);
+        }
+    }
+
+    function switchTab(tabId, btn) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        if (btn) btn.classList.add('active');
+        
+        if (tabId === 'inventoryTab') {
+            renderInventoryTable();
+        } else if (tabId === 'viewAllTab') {
+            renderViewAll();
+        }
+    }
+
+    function switchToViewAll() {
+        const viewAllBtn = document.querySelectorAll('.tab-btn')[2];
+        switchTab('viewAllTab', viewAllBtn);
+    }
+
+    // Home button inside View All — manually return to Estimate Generator
+    function goHomeFromViewAll() {
+        const estimateBtn = document.querySelectorAll('.tab-btn')[0];
+        switchTab('estimateTab', estimateBtn);
+    }
+
+    function previewLocalImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                currentBase64Image = e.target.result;
+                const imgPreview = document.getElementById('imagePreview');
+                imgPreview.src = currentBase64Image;
+                imgPreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function escapeHtml(str) {
+        return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    // ---------- ESTIMATE HELPERS ----------
+    // Find the row in the estimate table for a given item name
+    function findEstimateRowByName(name) {
+        const rows = document.querySelectorAll('#tableBody tr');
+        const lower = name.toLowerCase();
+        for (let row of rows) {
+            const nameInput = row.querySelector('.item-name');
+            if (nameInput && nameInput.value.toLowerCase() === lower) {
+                return row;
+            }
+        }
+        return null;
+    }
+
+    // Get the current qty an item has in the estimate (0 if not present)
+    function getEstimateQtyForName(name) {
+        const row = findEstimateRowByName(name);
+        if (!row) return 0;
+        const qtyInput = row.querySelector('.item-qty');
+        return parseInt(qtyInput.value) || 0;
+    }
+
+    // Add an item to the estimate. If exists, increment by `qty`; else create row.
+    function addOrIncrementEstimateItem(item, qty) {
+        const addQty = parseInt(qty) || 0;
+        if (addQty <= 0) return;
+
+        const existing = findEstimateRowByName(item.name);
+        if (existing) {
+            const qtyInput = existing.querySelector('.item-qty');
+            const currentQty = parseInt(qtyInput.value) || 0;
+            qtyInput.value = currentQty + addQty;
+        } else {
+            addRow(item.name, addQty, item.brand, item.img);
+        }
+    }
+
+    // Set the estimate qty for an item to an exact value (0 removes the row)
+    function setEstimateQtyForName(name, qty) {
+        const existing = findEstimateRowByName(name);
+        if (qty <= 0) {
+            if (existing) {
+                existing.remove();
+                updateIndexes();
+            }
+            return;
+        }
+        if (existing) {
+            existing.querySelector('.item-qty').value = qty;
+        }
+    }
+
+    // ---------- VIEW ALL INTERACTIONS ----------
+    // + button in View All: increment that item in the estimate by its default qty
+    function incrementFromViewAll(id) {
+        const item = inventory.find(i => i.id === id);
+        if (!item) return;
+        const step = parseInt(item.qty) || 1;
+        addOrIncrementEstimateItem(item, step);
+        renderViewAll();
+        showToast(`+${step} "${item.name}"`);
+    }
+
+    // − button in View All: decrement that item in the estimate by its default qty
+    function decrementFromViewAll(id) {
+        const item = inventory.find(i => i.id === id);
+        if (!item) return;
+        const step = parseInt(item.qty) || 1;
+        const currentQty = getEstimateQtyForName(item.name);
+        const newQty = Math.max(0, currentQty - step);
+        setEstimateQtyForName(item.name, newQty);
+        renderViewAll();
+        showToast(`−${step} "${item.name}"`);
+    }
+
+    // Legacy "Add to Estimate" button — adds default qty once, keeps View All open
+    function addItemFromViewAll(id) {
+        const item = inventory.find(i => i.id === id);
+        if (!item) return;
+        const step = parseInt(item.qty) || 1;
+        addOrIncrementEstimateItem(item, step);
+        renderViewAll();
+        showToast(`Added "${item.name}"`);
+    }
+
+    // Toast
+    function showToast(message) {
+        let toast = document.getElementById('appToast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'appToast';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 24px;
+                left: 50%;
+                transform: translateX(-50%) translateY(20px);
+                background: #1e293b;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 6px;
+                font-size: 14px;
+                font-weight: 500;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                opacity: 0;
+                transition: opacity 0.25s, transform 0.25s;
+                z-index: 9999;
+                pointer-events: none;
+            `;
+            document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        void toast.offsetWidth;
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(-50%) translateY(0)';
+
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(-50%) translateY(20px)';
+        }, 1500);
+    }
+
+    function handleDropdownSelect(value) {
+        const selectedItem = inventory.find(item => item.name.toLowerCase() === value.toLowerCase());
+        if (selectedItem) {
+            addOrIncrementEstimateItem(selectedItem, parseInt(selectedItem.qty) || 1);
+            document.getElementById('itemSearchInput').value = '';
+            document.getElementById('searchDropdown').classList.remove('show');
+        }
+    }
+
+    function handleInlineSelect(input) {
+        const val = input.value;
+        const selectedItem = inventory.find(item => item.name.toLowerCase() === val.toLowerCase());
+        if (selectedItem) {
+            const row = input.closest('tr');
+            row.querySelector('.table-thumb').src = selectedItem.img;
+            row.querySelector('.item-qty').value = selectedItem.qty;
+            row.querySelector('.item-brand').value = selectedItem.brand || '';
+        }
+    }
+
+    function renderInventoryTable() {
+        const tbody = document.getElementById('inventoryTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        
+        if (!Array.isArray(inventory) || inventory.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px; color: #64748b;">No inventory items yet. Add your first item above.</td></tr>';
+            return;
+        }
+
+        inventory.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><img src="${escapeHtml(item.img || defaultPlaceholder)}" class="table-thumb" onerror="this.src='${defaultPlaceholder}'"></td>
+                <td><strong>${escapeHtml(item.name)}</strong></td>
+                <td>${escapeHtml(item.qty)}</td>
+                <td>${escapeHtml(item.brand || '')}</td>
+                <td>
+                    <button class="btn btn-edit" onclick="editInventoryItem(${item.id})">Edit</button>
+                    <button class="btn btn-delete" onclick="deleteInventoryItem(${item.id})">Delete</button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    // ---------- VIEW ALL TAB (LIST VIEW) ----------
+    function renderViewAll() {
+        const body = document.getElementById('viewAllBody');
+        if (!body) return;
+
+        let items = Array.isArray(inventory) ? inventory.slice() : [];
+
+        if (items.length === 0) {
+            body.innerHTML = `<div class="empty-state">No inventory items yet.</div>`;
+            return;
+        }
+
+        items.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+
+        body.innerHTML = items.map(item => {
+            // How many of this item are currently in the estimate?
+            const inEstimate = getEstimateQtyForName(item.name);
+            const step = parseInt(item.qty) || 1;
+            const isEmpty = inEstimate === 0;
+            const minusDisabled = isEmpty ? 'disabled' : '';
+
+            return `
+                <div class="viewall-row">
+                    <div class="row-img">
+                        <img src="${escapeHtml(item.img || defaultPlaceholder)}" alt="${escapeHtml(item.name)}" onerror="this.src='${defaultPlaceholder}'">
+                    </div>
+                    <div class="row-name">${escapeHtml(item.name)}</div>
+                    <div class="row-qty" style="text-align:center;">
+                        <div class="qty-stepper ${isEmpty ? 'is-empty' : ''}">
+                            <button class="qty-minus" ${minusDisabled} onclick="decrementFromViewAll(${item.id})" title="Remove ${step} from estimate">−</button>
+                            <span class="qty-count">${inEstimate}</span>
+                            <button class="qty-plus" onclick="incrementFromViewAll(${item.id})" title="Add ${step} to estimate">+</button>
+                        </div>
+                    </div>
+                    <div class="row-brand">${item.brand ? escapeHtml(item.brand) : '<span style="color:#cbd5e1;">—</span>'}</div>
+                    <div class="row-action">
+                        <button class="btn btn-add btn-sm" onclick="addItemFromViewAll(${item.id})">+ Add to Estimate</button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // ---------- INVENTORY CRUD ----------
+    function saveInventoryItem() {
+        const id = document.getElementById('invEditId').value;
+        const name = document.getElementById('invName').value.trim();
+        const qty = parseInt(document.getElementById('invQty').value) || 1;
+        const brand = document.getElementById('invBrand').value.trim();
+
+        if (!name) {
+            alert('Please enter an item name.');
+            return;
+        }
+
+        if (id) {
+            const item = inventory.find(i => i.id == id);
+            if (item) {
+                item.name = name;
+                item.qty = qty;
+                item.brand = brand;
+                if (currentBase64Image !== defaultPlaceholder) {
+                    item.img = currentBase64Image;
+                }
+            }
+        } else {
+            inventory.push({
+                id: Date.now(),
+                name: name,
+                qty: qty,
+                brand: brand,
+                img: currentBase64Image
+            });
+        }
+
+        saveToLocalStorage();
+        resetInvForm();
+        refreshInventoryViews();
+        showToast(id ? 'Item updated' : 'Item added to inventory');
+    }
+
+    function editInventoryItem(id) {
+        const item = inventory.find(i => i.id === id);
+        if (!item) return;
+
+        document.getElementById('invEditId').value = item.id;
+        document.getElementById('invName').value = item.name;
+        document.getElementById('invQty').value = item.qty;
+        document.getElementById('invBrand').value = item.brand || '';
+        
+        currentBase64Image = item.img || defaultPlaceholder;
+        const imgPreview = document.getElementById('imagePreview');
+        imgPreview.src = currentBase64Image;
+        imgPreview.style.display = 'block';
+
+        document.getElementById('btnSaveInv').textContent = 'Update Item';
+        document.getElementById('btnCancelEdit').style.display = 'inline-block';
+    }
+
+    function deleteInventoryItem(id) {
+        if (!confirm('Are you sure you want to delete this item?')) return;
+        inventory = inventory.filter(i => i.id !== id);
+        saveToLocalStorage();
+        refreshInventoryViews();
+        showToast('Item deleted');
+    }
+
+    function resetInvForm() {
+        document.getElementById('invEditId').value = '';
+        document.getElementById('invName').value = '';
+        document.getElementById('invQty').value = '1';
+        document.getElementById('invBrand').value = '';
+        document.getElementById('invImageInput').value = '';
+        document.getElementById('imagePreview').style.display = 'none';
+        document.getElementById('btnSaveInv').textContent = 'Save Item to Inventory';
+        document.getElementById('btnCancelEdit').style.display = 'none';
+        currentBase64Image = defaultPlaceholder;
+    }
+
+    function refreshInventoryViews() {
+        renderInventoryTable();
+        renderViewAll();
+    }
+
+    // ---------- ESTIMATE TABLE ----------
+    function addRow(name = '', qty = 1, brand = '', imgUrl = defaultPlaceholder) {
+        const tbody = document.getElementById('tableBody');
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td class="row-index"></td>
+            <td>
+                <div class="item-cell">
+                    <img src="${escapeHtml(imgUrl)}" class="table-thumb" onerror="this.src='${defaultPlaceholder}'">
+                    <input type="text" value="${escapeHtml(name)}" class="item-name" placeholder="Type or select item..." onchange="handleInlineSelect(this)">
+                </div>
+            </td>
+            <td><input type="text" value="${escapeHtml(qty)}" class="item-qty"></td>
+            <td><input type="text" value="${escapeHtml(brand)}" class="item-brand"></td>
+            <td class="no-print"><button class="btn-delete" onclick="removeRow(this)">X</button></td>
+        `;
+
+        tbody.appendChild(row);
+        updateIndexes();
+    }
+
+    function addNewRow() {
+        addRow('', 1, '', defaultPlaceholder);
+    }
+
+    function removeRow(btn) {
+        btn.closest('tr').remove();
+        updateIndexes();
+    }
+
+    function updateIndexes() {
+        document.querySelectorAll('#tableBody tr').forEach((row, index) => {
+            row.querySelector('.row-index').textContent = index + 1;
+        });
+    }
+
+    // ---------- SEARCH DROPDOWN ----------
+    function setupSearchDropdown() {
+        const searchInput = document.getElementById('itemSearchInput');
+        const dropdown = document.getElementById('searchDropdown');
+        
+        if (!searchInput || !dropdown) return;
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            
+            if (!query) {
+                dropdown.classList.remove('show');
+                return;
+            }
+            
+            const matches = inventory.filter(item => 
+                item.name.toLowerCase().includes(query)
+            );
+            
+            if (matches.length === 0) {
+                dropdown.innerHTML = '<div class="no-results">No items found</div>';
+                dropdown.classList.add('show');
+                return;
+            }
+            
+            dropdown.innerHTML = matches.map(item => `
+                <div class="search-dropdown-item" data-item='${escapeHtml(JSON.stringify(item))}'>
+                    <img src="${escapeHtml(item.img || defaultPlaceholder)}" alt="${escapeHtml(item.name)}" onerror="this.src='${defaultPlaceholder}'">
+                    <div class="item-info">
+                        <span class="item-name">${escapeHtml(item.name)}</span>
+                        <span class="item-details">Qty: ${escapeHtml(item.qty)} | Brand: ${escapeHtml(item.brand || 'N/A')}</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            dropdown.classList.add('show');
+            
+            dropdown.querySelectorAll('.search-dropdown-item').forEach(el => {
+                el.addEventListener('click', function() {
+                    const item = JSON.parse(this.dataset.item);
+                    handleDropdownSelect(item.name);
+                });
+            });
+        });
+        
+        searchInput.addEventListener('blur', function() {
+            setTimeout(() => {
+                dropdown.classList.remove('show');
+            }, 200);
+        });
+        
+        searchInput.addEventListener('focus', function() {
+            if (this.value.trim()) {
+                this.dispatchEvent(new Event('input'));
+            }
+        });
+        
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const firstItem = dropdown.querySelector('.search-dropdown-item');
+                if (firstItem) {
+                    const item = JSON.parse(firstItem.dataset.item);
+                    handleDropdownSelect(item.name);
+                }
+            }
+            if (e.key === 'Escape') {
+                dropdown.classList.remove('show');
+                this.blur();
+            }
+        });
+    }
+
+    // ---------- INIT ----------
+    refreshInventoryViews();
+    addNewRow();
+    setupSearchDropdown();
+</script>
+
+</body>
+</html>
