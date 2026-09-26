@@ -348,30 +348,30 @@
             display: none;
         }
 
-
         /* PDF Printing Styles & Header/Footer Removal */
         @page {
-            margin: 8mm;
+            /* Zero margins remove the default browser headers and footers */
+            margin: 0;
+            size: auto;
         }
 
         @media print {
             html, body {
-                margin: 0;
-                padding: 0;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: #fff !important;
                 height: auto;
-            }
-            
-            body { 
-                background: none; 
             }
 
             .print-border {
-                display: block;
+                display: block !important;
                 position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
+                top: 8mm;
+                left: 8mm;
+                right: 8mm;
+                bottom: 8mm;
+                width: auto;
+                height: auto;
                 border: 2px solid var(--primary);
                 opacity: 0.5;
                 box-sizing: border-box;
@@ -380,12 +380,12 @@
             }
 
             .container { 
-                box-shadow: none; 
-                border: none;
-                border-radius: 0;
-                padding: 10mm !important;
-                width: 100%; 
-                max-width: 100%;
+                box-shadow: none !important; 
+                border: none !important;
+                border-radius: 0 !important;
+                padding: 14mm !important;
+                width: 100% !important; 
+                max-width: 100% !important;
                 height: auto;
                 overflow: visible;
                 box-sizing: border-box; 
@@ -394,20 +394,14 @@
             .nav-tabs, .search-select-section, .no-print, .btn-delete { 
                 display: none !important; 
             }
+
             input { 
                 border: none !important; 
                 background: transparent !important; 
                 padding: 0 !important; 
             }
-            input[type="date"]::-webkit-calendar-picker-indicator {
-                display: none !important;
-                opacity: 0 !important;
-                visibility: hidden !important;
-                width: 0 !important;
-                height: 0 !important;
-                position: absolute !important;
-                pointer-events: none !important;
-            }
+
+            input[type="date"]::-webkit-calendar-picker-indicator,
             input[type="date"]::-webkit-inner-spin-button,
             input[type="date"]::-webkit-outer-spin-button,
             input[type="date"]::-webkit-clear-button,
@@ -418,10 +412,15 @@
                 opacity: 0 !important;
                 visibility: hidden !important;
                 width: 0 !important;
+                height: 0 !important;
+                position: absolute !important;
+                pointer-events: none !important;
             }
+
             .no-print-date {
                 display: none !important;
             }
+
             .print-date-text {
                 display: block !important;
                 font-size: 14px;
@@ -583,16 +582,10 @@
     </div>
 </div>
 
-
-
 <script>
     const defaultPlaceholder = "white.png";
 
     const defaultInventorySeed = [
-       
-        
-        
-        
   { id: 114, name: "0.8 mm Water Sleev", qty: 1, brand: "", img: "sleev.jpg" },
   { id: 113, name: "Flexi Raw DB 36 Way", qty: 1, brand: "Schneider", img: "a.jpg" },
   { id: 112, name: "Flexi Raw DB 56 Way", qty: 1, brand: "Schneider", img: "a.jpg" },
@@ -707,8 +700,6 @@
   { id: 3, name: "20 mm Electrical Conduit LMS - BLACK", qty: 1, brand: "Astral / Polycab", img: "pipe.jpg" },
   { id: 2, name: "20 mm Electrical Conduit MMS - IVORY", qty: 1, brand: "Astral / Polycab", img: "dv.png" },
   { id: 1, name: "20 mm Electrical Conduit LMS - IVORY", qty: 1, brand: "Astral / Polycab", img: "dv.png" }
-        
-        
     ];
 
     // Safe inventory loading
@@ -781,7 +772,6 @@
         switchTab('viewAllTab', viewAllBtn);
     }
 
-    // Home button inside View All — manually return to Estimate Generator
     function goHomeFromViewAll() {
         const estimateBtn = document.querySelectorAll('.tab-btn')[0];
         switchTab('estimateTab', estimateBtn);
@@ -811,7 +801,6 @@
     }
 
     // ---------- ESTIMATE HELPERS ----------
-    // Find the row in the estimate table for a given item name
     function findEstimateRowByName(name) {
         const rows = document.querySelectorAll('#tableBody tr');
         const lower = name.toLowerCase();
@@ -824,7 +813,6 @@
         return null;
     }
 
-    // Get the current qty an item has in the estimate (0 if not present)
     function getEstimateQtyForName(name) {
         const row = findEstimateRowByName(name);
         if (!row) return 0;
@@ -832,7 +820,6 @@
         return parseInt(qtyInput.value) || 0;
     }
 
-    // Add an item to the estimate. If exists, increment by `qty`; else create row.
     function addOrIncrementEstimateItem(item, qty) {
         const addQty = parseInt(qty) || 0;
         if (addQty <= 0) return;
@@ -847,7 +834,6 @@
         }
     }
 
-    // Set the estimate qty for an item to an exact value (0 removes the row)
     function setEstimateQtyForName(name, qty) {
         const existing = findEstimateRowByName(name);
         if (qty <= 0) {
@@ -863,7 +849,6 @@
     }
 
     // ---------- VIEW ALL INTERACTIONS ----------
-    // + button in View All: increment that item in the estimate by its default qty
     function incrementFromViewAll(id) {
         const item = inventory.find(i => i.id === id);
         if (!item) return;
@@ -873,7 +858,6 @@
         showToast(`+${step} "${item.name}"`);
     }
 
-    // − button in View All: decrement that item in the estimate by its default qty
     function decrementFromViewAll(id) {
         const item = inventory.find(i => i.id === id);
         if (!item) return;
@@ -885,7 +869,6 @@
         showToast(`−${step} "${item.name}"`);
     }
 
-    // Legacy "Add to Estimate" button — adds default qty once, keeps View All open
     function addItemFromViewAll(id) {
         const item = inventory.find(i => i.id === id);
         if (!item) return;
@@ -993,7 +976,6 @@
         items.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
 
         body.innerHTML = items.map(item => {
-            // How many of this item are currently in the estimate?
             const inEstimate = getEstimateQtyForName(item.name);
             const step = parseInt(item.qty) || 1;
             const isEmpty = inEstimate === 0;
